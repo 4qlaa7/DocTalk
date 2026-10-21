@@ -1,7 +1,7 @@
 from fastapi import FastAPI
+from dotenv import load_dotenv
+load_dotenv('.env')
+from routes.base import base_router
 
 app = FastAPI()
-
-@app.get("/sum")
-def sum(a: int, b: int):
-    return {"result": f'result is {a + b}'}
+app.include_router(base_router)
